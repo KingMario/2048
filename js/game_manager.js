@@ -6,11 +6,16 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
   this.startTiles     = 2;
 
+  this.inputManager.on("tap", this.recover.bind(this));
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
+}
+
+GameManager.prototype.recover = function() {
+  this.actuator.removeCover();
 }
 
 // Restart the game

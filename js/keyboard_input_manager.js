@@ -123,6 +123,8 @@ KeyboardInputManager.prototype.listen = function () {
     if (Math.max(absDx, absDy) > 10) {
       // (right : left) : (down : up)
       self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+    } else {
+      self.emit("tap");
     }
   });
 };

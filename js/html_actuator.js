@@ -44,6 +44,16 @@ HTMLActuator.prototype.clearContainer = function (container) {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
+  var cover = document.createElement("div");
+  this.applyClasses(cover, ['tile-cover']);
+  container.appendChild(cover);
+
+  cover.ondblclick = this.removeCover;
+};
+
+HTMLActuator.prototype.removeCover = function (event) {
+  var tileCover = document.getElementsByClassName("tile-cover")[0];
+  tileCover.style.display = "none";
 };
 
 HTMLActuator.prototype.addTile = function (tile) {
